@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Web Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#selectAll").click(function () {
+          if ($(this).is(":checked")) {
+            $(".country").prop("checked", true);
+          } else {
+            $(".country").prop("checked", false);
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <form action="/" method="POST">
+      輸入關鍵字，用「,」區別關鍵字:<br />
+      <input type="text" name="textfield" /><br />
+      勾選選單:<br />
+      <input type="checkbox" id="selectAll" name="checkbox" value="all" />
+      <label for="selectAll">全選</label><br />
+      <input
+        type="checkbox"
+        class="country"
+        id="cn"
+        name="checkbox"
+        value="cn"
+      />
+      <label for="cn">中國</label><br />
+      <input
+        type="checkbox"
+        class="country"
+        id="us"
+        name="checkbox"
+        value="us"
+      />
+      <label for="us">美國</label><br />
+      <input
+        type="checkbox"
+        class="country"
+        id="de"
+        name="checkbox"
+        value="de"
+      />
+      <label for="de">德國</label><br />
+      <input
+        type="checkbox"
+        class="country"
+        id="gb"
+        name="checkbox"
+        value="gb"
+      />
+      <label for="gb">英國</label><br />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

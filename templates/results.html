@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>搜尋結果</title>
+    <style>
+      body {
+        margin: 20px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 20px;
+        font-size: 14px;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+      .download-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>搜尋結果</h1>
+    <a href="{{ url_for('download') }}" class="download-button"
+      >點此下載.csv檔案</a
+    >
+    <table>
+      <tr>
+        <th>國家-關鍵字</th>
+        <th>標題</th>
+        <th>原文商城描述</th>
+        <th>中文翻譯</th>
+      </tr>
+      {% for country_keyword, app_list in results.items() %} {% for app in
+      app_list %}
+      <tr>
+        <td>{{ country_keyword }}</td>
+        <td>{{ app.title }}</td>
+        <td>{{ app.original_description }}</td>
+        <td>{{ app.chinese_translation }}</td>
+      </tr>
+      {% if app.description %}
+      <tr>
+        <td></td>
+        <td></td>
+        <td>{{ app.description }}</td>
+        <td></td>
+      </tr>
+      {% endif %} {% endfor %} {% endfor %}
+    </table>
+  </body>
+</html>
